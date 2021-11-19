@@ -1,0 +1,13 @@
+.navbar {
+	background-color: rgb(22, 28, 96);
+}
+a.nav-link {
+	color: rgb(187, 233, 240) !important;
+	font-weight: bold;
+	margin: 0 10px;
+	font-size: 1.1rem;
+}
+
+a.nav-link:hover {
+	color: rgb(37, 189, 214) !important;
+}

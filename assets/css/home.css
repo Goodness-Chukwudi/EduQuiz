@@ -1,0 +1,48 @@
+.body {
+	max-width: 100vw;
+	min-height: 100vh;
+	overflow: hidden;
+	background-color: rgb(187, 233, 240);
+}
+.banner {
+	width: 0;
+	height: 0;
+	border-top: 55vw solid rgb(19, 23, 71);
+	border-right: 180vw solid transparent;
+}
+.home-cols {
+	margin: 10% 0 0 0;
+}
+.service {
+	color: rgb(187, 233, 240);
+}
+.take-quiz {
+	background-color: rgb(187, 233, 240);
+	height: 60px;
+	width: 250px;
+	margin: 0 auto;
+	color: rgb(19, 23, 71);
+}
+.take-quiz:hover {
+	background-color: rgb(37, 189, 214);
+	color: rgb(187, 233, 240);
+}
+.round-img {
+	height: 450px;
+	width: 450px;
+	background-color: rgb(187, 233, 240);
+}
+
+.write-up {
+	width: 70%;
+	color: rgb(19, 23, 71);
+}
+
+.write-up span {
+	font-weight: bolder;
+}
+
+a {
+	text-decoration: none;
+	color: inherit;
+}
