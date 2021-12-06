@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link rel="stylesheet" href="./assets/css/quiz.css" />
+		<link rel="stylesheet" href="./assets/css/bootstrap.min.css" />
+		<link rel="stylesheet" href="./assets/css/nav.css" />
+		<link rel="stylesheet" href="./assets/css/home.css" />
+		<link rel="stylesheet" href="./assets/css/footer.css" />
+		<link
+			rel="shortcut icon"
+			href="./assets/images/eduquiz-icon.ico"
+			type="image/x-icon"
+		/>
+		<title>Quiz</title>
+	</head>
+	<body>
+		<header>
+			<head>
+				<nav class="navbar navbar-expand-lg navbar-dark">
+					<div class="container">
+						<a class="navbar-brand" href="#"
+							><img
+								src="./assets/images/logo.png"
+								alt="EduQuiz logo"
+						/></a>
+						<button
+							class="navbar-toggler"
+							type="button"
+							data-bs-toggle="collapse"
+							data-bs-target="#navbarNav"
+							aria-controls="navbarNav"
+							aria-expanded="false"
+							aria-label="Toggle navigation"
+						>
+							<span class="navbar-toggler-icon"></span>
+						</button>
+						<div class="collapse navbar-collapse" id="navbarNav">
+							<ul
+								class="
+									navbar-nav
+									container-fluid
+									d-flex
+									justify-content-end
+								"
+							>
+								<li class="nav-item">
+									<a
+										class="nav-link active"
+										aria-current="page"
+										href="#"
+										>Home</a
+									>
+								</li>
+								<li class="nav-item">
+									<a class="nav-link" href="#">Blog</a>
+								</li>
+								<li class="nav-item">
+									<a class="nav-link" href="#">Sign up</a>
+								</li>
+
+								<li class="nav-item">
+									<a class="nav-link" href="#">Log in</a>
+								</li>
+							</ul>
+						</div>
+						<p class="bg-light">profile</p>
+					</div>
+				</nav>
+			</head>
+		</header>
+
+		<main>
+			<!-- QUESTION CONTAINER BEGINS-->
+			<div class="container mt-5">
+				<div class="d-flex justify-content-center row">
+					<div class="col-md-10 col-lg-10">
+						<div class="border">
+							<div class="question bg-white p-3 border-bottom">
+								<div
+									class="
+										d-flex
+										flex-row
+										justify-content-between
+										align-items-center
+										mcq
+									"
+								>
+									<h5 id="quiz-title">
+										<!-- Quiz Title is Appended here -->
+									</h5>
+									<h5 id="time-left">
+										<!-- Time left is appended here -->
+									</h5>
+									<span id="question-number">
+										<!--Current question number is tracked here (5 of 20)-->
+									</span>
+								</div>
+							</div>
+							<div class="question bg-white p-3 border-bottom">
+								<div
+									class="
+										d-flex
+										flex-row
+										align-items-center
+										question-title
+									"
+								>
+									<h5 class="mt-1 ml-2 activeQuestion">
+										<!-- Current Active Question Are Appended Here -->
+									</h5>
+								</div>
+
+								<!-- Answers are appended here -->
+								<div id="options"></div>
+							</div>
+							<div
+								class="
+									d-flex
+									flex-row
+									justify-content-between
+									align-items-center
+									p-3
+									bg-white
+								"
+							>
+								<button
+									class="
+										btn btn-secondary
+										d-flex
+										align-items-center
+									"
+									type="button"
+									id="prevBtn"
+								>
+									<i class="fa fa-angle-left mt-1 mr-1"></i
+									>previous
+								</button>
+								<button
+									class="
+										btn btn-primary
+										border-primary
+										align-items-center
+										px-4
+									"
+									type="button"
+									id="nextBtn"
+								>
+									Next<i class="fa fa-angle-right ml-2"></i>
+								</button>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<!-- QUESTION CONTAINER ENDS-->
+		</main>
+
+		<footer class="mt-5 pt-5">
+			<div class="row text-center footer pt-5">
+				<div class="col-sm-4">
+					<h5>Contact Info</h5>
+					<a href="tel:+23486752721"
+						><img
+							class="me-3"
+							src="./assets/images/call.png"
+							alt="call"
+						/>+234 867 527 21</a
+					>
+					<br />
+					<a href="mailto:info@eduquiz.com"
+						><img
+							class="me-3"
+							src="./assets/images/email.png"
+							alt="email"
+						/>info@eduquiz.com</a
+					>
+				</div>
+				<div class="col-sm-4">
+					<h5>Office Address</h5>
+					<p>N0 8 Eduquiz complex Abuja, Nigeria</p>
+				</div>
+				<div class="col-sm-4">
+					<h5>Copyright</h5>
+					<p>&copy;Eduquiz Nigeria Limited</p>
+				</div>
+			</div>
+		</footer>
+
+		<!-- ADD SCRIPT FILES -->
+		<script src="./assets/js/quiz.js"></script>
+	</body>
+</html>

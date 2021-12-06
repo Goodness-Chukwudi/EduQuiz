@@ -23,16 +23,29 @@
 	margin: 0 auto;
 	color: rgb(19, 23, 71);
 }
-.take-quiz:hover {
+.take-quiz:hover,
+#continue-quiz-btn:hover {
 	background-color: rgb(37, 189, 214);
 	color: rgb(187, 233, 240);
+}
+
+.quiz-id {
+	background-color: rgb(187, 233, 240);
+	border-radius: 10px;
+	height: 100px;
+	width: 50%;
+}
+.quiz-id input {
+	background-color: rgb(187, 233, 240);
+}
+button#continue-quiz-btn {
+	width: 100%;
 }
 .round-img {
 	height: 450px;
 	width: 450px;
 	background-color: rgb(187, 233, 240);
 }
-
 .write-up {
 	width: 70%;
 	color: rgb(19, 23, 71);

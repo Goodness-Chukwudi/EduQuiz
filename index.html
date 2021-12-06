@@ -5,65 +5,75 @@
 		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<link rel="stylesheet" href="./assets/css/bootstrap.min.css" />
+		<link rel="stylesheet" href="./assets/css/nav.css" />
 		<link rel="stylesheet" href="./assets/css/home.css" />
 		<link rel="stylesheet" href="./assets/css/footer.css" />
-		<link rel="stylesheet" href="./assets/css/nav.css" />
+		<link
+			rel="shortcut icon"
+			href="./assets/images/eduquiz-icon.ico"
+			type="image/x-icon"
+		/>
 		<title>EduQuiz|Home</title>
 	</head>
 	<body>
 		<div class="body position-relative">
-			<head>
-				<nav class="navbar navbar-expand-lg navbar-dark">
-					<div class="container">
-						<a class="navbar-brand" href="#"
-							><img
-								src="./assets/images/logo.png"
-								alt="EduQuiz logo"
-						/></a>
-						<button
-							class="navbar-toggler"
-							type="button"
-							data-bs-toggle="collapse"
-							data-bs-target="#navbarNav"
-							aria-controls="navbarNav"
-							aria-expanded="false"
-							aria-label="Toggle navigation"
-						>
-							<span class="navbar-toggler-icon"></span>
-						</button>
-						<div class="collapse navbar-collapse" id="navbarNav">
-							<ul
-								class="
-									navbar-nav
-									container-fluid
-									d-flex
-									justify-content-end
-								"
+			<header>
+				<head>
+					<nav class="navbar navbar-expand-lg navbar-dark">
+						<div class="container">
+							<a class="navbar-brand" href="#"
+								><img
+									src="./assets/images/logo.png"
+									alt="EduQuiz logo"
+							/></a>
+							<button
+								class="navbar-toggler"
+								type="button"
+								data-bs-toggle="collapse"
+								data-bs-target="#navbarNav"
+								aria-controls="navbarNav"
+								aria-expanded="false"
+								aria-label="Toggle navigation"
 							>
-								<li class="nav-item">
-									<a
-										class="nav-link active"
-										aria-current="page"
-										href="#"
-										>Home</a
-									>
-								</li>
-								<li class="nav-item">
-									<a class="nav-link" href="#">Blog</a>
-								</li>
-								<li class="nav-item">
-									<a class="nav-link" href="#">Sign up</a>
-								</li>
+								<span class="navbar-toggler-icon"></span>
+							</button>
+							<div
+								class="collapse navbar-collapse"
+								id="navbarNav"
+							>
+								<ul
+									class="
+										navbar-nav
+										container-fluid
+										d-flex
+										justify-content-end
+									"
+								>
+									<li class="nav-item">
+										<a
+											class="nav-link active"
+											aria-current="page"
+											href="#"
+											>Home</a
+										>
+									</li>
+									<li class="nav-item">
+										<a class="nav-link" href="#">Blog</a>
+									</li>
+									<li class="nav-item">
+										<a class="nav-link" href="#">Sign up</a>
+									</li>
 
-								<li class="nav-item">
-									<a class="nav-link" href="#">Log in</a>
-								</li>
-							</ul>
+									<li class="nav-item">
+										<a class="nav-link" href="#">Log in</a>
+									</li>
+								</ul>
+							</div>
+							<p class="bg-light">profile</p>
 						</div>
-						<p>profile</p>
-					</div>
-				</nav>
-			</head>
+					</nav>
+				</head>
+			</header>
 
 			<main class="position-relative">
 				<div class="banner"></div>
@@ -82,9 +92,34 @@
 								We provide the best online examinations
 								services!
 							</p>
-							<p class="h5 rounded-pill take-quiz pt-3 mt-4">
+							<button class="h5 rounded-pill take-quiz mt-4">
 								Take a quiz
-							</p>
+							</button>
+
+							<!-- Quiz ID Popup -->
+
+							<div
+								class="quiz-id mt-2 mx-auto p-2"
+								style="visibility: hidden"
+							>
+								<div>
+									<input
+										type="text"
+										class="form-control mb-2"
+										id="id-input"
+										placeholder="Enter your quiz ID to continue"
+									/>
+								</div>
+								<button
+									id="continue-quiz-btn"
+									type="button"
+									class="btn btn-sm mb-2 mx-auto d-block"
+								>
+									Continue
+								</button>
+							</div>
+
+							<!-- Quiz ID Popup ends -->
 						</div>
 						<div class="col-lg-6 px-5">
 							<div class="rounded-circle mx-auto round-img mt-5">
@@ -152,5 +187,6 @@
 		</div>
 
 		<script src="./assets/js/bootstrap.min.js"></script>
+		<script src="./assets/js/index.js"></script>
 	</body>
 </html>
