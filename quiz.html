@@ -4,72 +4,129 @@
 		<meta charset="UTF-8" />
 		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<link rel="stylesheet" href="./assets/css/quiz.css" />
+		<link rel="stylesheet" href="./assets/css/modal.css" />
 		<link rel="stylesheet" href="./assets/css/bootstrap.min.css" />
+		<link rel="stylesheet" href="./assets/css/quiz.css" />
 		<link rel="stylesheet" href="./assets/css/nav.css" />
-		<link rel="stylesheet" href="./assets/css/home.css" />
 		<link rel="stylesheet" href="./assets/css/footer.css" />
 		<link
 			rel="shortcut icon"
 			href="./assets/images/eduquiz-icon.ico"
 			type="image/x-icon"
 		/>
-		<title>Quiz</title>
+		<title>EduQuiz|Quiz</title>
 	</head>
 	<body>
 		<header>
-			<head>
-				<nav class="navbar navbar-expand-lg navbar-dark">
-					<div class="container">
-						<a class="navbar-brand" href="#"
-							><img
-								src="./assets/images/logo.png"
-								alt="EduQuiz logo"
-						/></a>
-						<button
-							class="navbar-toggler"
-							type="button"
-							data-bs-toggle="collapse"
-							data-bs-target="#navbarNav"
-							aria-controls="navbarNav"
-							aria-expanded="false"
-							aria-label="Toggle navigation"
+			<nav class="navbar navbar-expand-lg navbar-dark">
+				<div class="container">
+					<a class="navbar-brand" href="/"
+						><img src="./assets/images/logo.png" alt="EduQuiz logo"
+					/></a>
+					<button
+						class="navbar-toggler"
+						type="button"
+						data-bs-toggle="collapse"
+						data-bs-target="#navbarNav"
+						aria-controls="navbarNav"
+						aria-expanded="false"
+						aria-label="Toggle navigation"
+					>
+						<span class="navbar-toggler-icon"></span>
+					</button>
+					<div class="collapse navbar-collapse" id="navbarNav">
+						<ul
+							class="
+								navbar-nav
+								container-fluid
+								d-flex
+								justify-content-end
+							"
 						>
-							<span class="navbar-toggler-icon"></span>
-						</button>
-						<div class="collapse navbar-collapse" id="navbarNav">
-							<ul
-								class="
-									navbar-nav
-									container-fluid
-									d-flex
-									justify-content-end
-								"
-							>
-								<li class="nav-item">
-									<a
-										class="nav-link active"
-										aria-current="page"
-										href="#"
-										>Home</a
-									>
-								</li>
-								<li class="nav-item">
-									<a class="nav-link" href="#">Blog</a>
-								</li>
-								<li class="nav-item">
-									<a class="nav-link" href="#">Sign up</a>
-								</li>
+							<li class="nav-item">
+								<a
+									class="nav-link active"
+									aria-current="page"
+									href="/"
+									>Home</a
+								>
+							</li>
+							<li class="nav-item">
+								<a class="nav-link" href="#">Blog</a>
+							</li>
+							<li class="nav-item">
+								<a
+									class="nav-link signUpLink"
+									href="#"
+									data-bs-toggle="modal"
+									data-bs-target="#staticBackdrop"
+									>Sign up</a
+								>
+							</li>
 
-								<li class="nav-item">
-									<a class="nav-link" href="#">Log in</a>
-								</li>
-							</ul>
-						</div>
-						<p class="bg-light">profile</p>
+							<li class="nav-item">
+								<a
+									class="nav-link logInLink"
+									href="#"
+									data-bs-toggle="modal"
+									data-bs-target="#staticBackdrop"
+									>Log in</a
+								>
+							</li>
+							<li class="nav-item dropdown">
+								<a
+									class="nav-link dropdown-toggle"
+									href="#"
+									id="navbarDarkDropdownMenuLink"
+									role="button"
+									data-bs-toggle="dropdown"
+									aria-expanded="false"
+								>
+									<img
+										src="./assets/images/user-profile.png"
+										alt="User profile"
+									/>
+								</a>
+								<ul
+									class="dropdown-menu dropdown-menu-light"
+									aria-labelledby="navbarDarkDropdownMenuLink"
+								>
+									<li>
+										<a
+											class="
+												d-none
+												dropdown-item
+												activeUserEmail
+											"
+											href="#"
+										>
+										</a>
+									</li>
+									<li>
+										<a
+											class="dropdown-item"
+											href="./create-quiz.html"
+											>Create quiz</a
+										>
+									</li>
+									<li>
+										<a
+											class="dropdown-item"
+											href="./records.html"
+											>Records</a
+										>
+									</li>
+									<li>
+										<a class="dropdown-item logout" href="#"
+											>Log out</a
+										>
+									</li>
+								</ul>
+							</li>
+						</ul>
 					</div>
-				</nav>
-			</head>
+				</div>
+			</nav>
 		</header>
 
 		<main>
@@ -135,7 +192,7 @@
 									type="button"
 									id="prevBtn"
 								>
-									<i class="fa fa-angle-left mt-1 mr-1"></i
+									<i class="fa fa-angle-left mt-1 me-1"></i
 									>previous
 								</button>
 								<button
@@ -148,7 +205,7 @@
 									type="button"
 									id="nextBtn"
 								>
-									Next<i class="fa fa-angle-right ml-2"></i>
+									Next<i class="fa fa-angle-right ms-2"></i>
 								</button>
 							</div>
 						</div>
@@ -190,7 +247,100 @@
 			</div>
 		</footer>
 
+		<!-- Modals  -->
+		<!-- Modals  -->
+		<!-- Modals  -->
+		<div
+			class="modal fade"
+			id="staticBackdrop"
+			data-bs-backdrop="static"
+			data-bs-keyboard="false"
+			tabindex="-1"
+			aria-labelledby="staticBackdropLabel"
+			aria-hidden="true"
+		>
+			<div class="modal-dialog modal-dialog-centered">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button
+							type="button"
+							class="btn-close"
+							data-bs-dismiss="modal"
+							aria-label="Close"
+						></button>
+					</div>
+					<div class="modal-body">
+						<!-- Modal Content here -->
+						<div class="container-fluid">
+							<div class="row main-content text-center">
+								<div class="col-md-4 text-center company_info">
+									<span class="company_logo"
+										><img
+											src="./assets/images/eduquiz-icon.png"
+									/></span>
+									<h4 class="company_title">Edu Quiz CBT</h4>
+								</div>
+								<div
+									class="
+										col-md-8 col-xs-12 col-sm-12
+										login_form
+									"
+								>
+									<div class="container-fluid">
+										<div class="row">
+											<h3 id="signupLoginTitle">
+												Log In
+											</h3>
+										</div>
+										<div class="row">
+											<form control="" class="form-group">
+												<div class="row">
+													<input
+														required
+														type="text"
+														name="username"
+														id="username"
+														class="form_input"
+														placeholder="Username"
+													/>
+												</div>
+												<div class="row">
+													<input
+														required
+														type="password"
+														name="password"
+														id="password"
+														class="form_input"
+														placeholder="Password"
+													/>
+												</div>
+												<div class="row">
+													<input
+														id="signupLoginBtn"
+														type="button"
+														value="Login"
+														class="btn modalBtn"
+													/>
+												</div>
+											</form>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<!-- Modal Content Ends Here -->
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- Modals  -->
+		<!-- Modals  -->
+		<!-- Modals  -->
+
 		<!-- ADD SCRIPT FILES -->
+		<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+		<script src="./assets/js/app.js"></script>
+		<script src="./assets/js/bootstrap.min.js"></script>
 		<script src="./assets/js/quiz.js"></script>
 	</body>
 </html>

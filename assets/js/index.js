@@ -13,7 +13,35 @@ function handlePopup() {
 }
 
 function loadQuiz() {
-	//TO DO:  Display any special instruction and information from creators
+	//TO DO:  Display any special instruction and information from quiz creator
+	// get the requested quiz
+	let quizId = document.getElementById("id-input").value;
+	getQuiz(quizId);
+}
 
-	location = "./quiz.html";
+function getQuiz(id) {
+	// Make a HTTP GET Request for starting quiz
+	axios.defaults.withCredentials = true;
+	axios
+		.get("http://localhost:5500/api/quiz/take-quiz/" + id, {
+			headers: { "Content-Type": "application/json" },
+			withCredentials: true,
+		})
+		.then((response) => {
+			// save user in session storage
+			sessionStorage.setItem(
+				"eduQuiz_Active_Quiz",
+				JSON.stringify(response.data)
+			);
+			location = "./quiz.html";
+		})
+		.catch((error) => {
+			if (error.response) {
+				alert(error.response.data);
+			} else if (error.request) {
+				alert(error.request);
+			} else {
+				console.log("Error", error.message);
+			}
+		});
 }

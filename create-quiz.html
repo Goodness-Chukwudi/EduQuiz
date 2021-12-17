@@ -7,14 +7,13 @@
 		<link rel="stylesheet" href="./assets/css/modal.css" />
 		<link rel="stylesheet" href="./assets/css/bootstrap.min.css" />
 		<link rel="stylesheet" href="./assets/css/nav.css" />
-		<link rel="stylesheet" href="./assets/css/home.css" />
 		<link rel="stylesheet" href="./assets/css/footer.css" />
 		<link
 			rel="shortcut icon"
 			href="./assets/images/eduquiz-icon.ico"
 			type="image/x-icon"
 		/>
-		<title>EduQuiz|Home</title>
+		<title>EduQuiz|Create Quiz</title>
 	</head>
 	<body>
 		<div class="body position-relative">
@@ -136,82 +135,242 @@
 				</nav>
 			</header>
 
-			<main class="position-relative">
-				<div class="banner"></div>
-				<div
-					class="
-						container-fluid
-						position-absolute
-						top-0
-						start-0
-						home-cols
-					"
-				>
-					<div class="row align-items-center text-center">
-						<div class="col-lg-6 ps-5">
-							<p class="h1 service pt-2">
-								We provide the best online examinations
-								services!
-							</p>
-							<button class="h5 rounded-pill take-quiz mt-4">
-								Take a quiz
-							</button>
+			<main>
+				<div class="container-fluid mt-5">
+					<div class="border container">
+						<h4 class="text-center">Create a new quiz</h4>
 
-							<!-- Quiz ID Popup -->
-
-							<div
-								class="quiz-id mt-2 mx-auto p-2"
-								style="visibility: hidden"
-							>
-								<div>
-									<input
-										type="text"
-										class="form-control mb-2"
-										id="id-input"
-										placeholder="Enter your quiz ID to continue"
-									/>
-								</div>
-								<button
-									id="continue-quiz-btn"
-									type="button"
-									class="btn btn-sm mb-2 mx-auto d-block"
+						<form class="addQuiz row g-3">
+							<div class="col-12">
+								<label for="inputTitle" class="form-label"
+									>Title</label
 								>
-									Continue
-								</button>
-							</div>
-
-							<!-- Quiz ID Popup ends -->
-						</div>
-						<div class="col-lg-6 px-5">
-							<div class="rounded-circle mx-auto round-img mt-5">
-								<img
-									class="img-fluid mt-5 pt-5"
-									src="./assets/images/online-test.png"
-									alt=""
+								<input
+									required
+									type="text"
+									class="form-control"
+									id="inputTitle"
+									placeholder="Enter your quiz title"
 								/>
 							</div>
-						</div>
-					</div>
-				</div>
+							<div class="col-md-6">
+								<label for="inputDuration" class="form-label"
+									>Duration (in mins)</label
+								>
+								<input
+									required
+									type="number"
+									min="1"
+									class="form-control"
+									id="inputDuration"
+								/>
+							</div>
+							<div class="col-md-6">
+								<label for="inputScore" class="form-label"
+									>Total available score</label
+								>
+								<input
+									required
+									min="1"
+									max="100"
+									type="number"
+									class="form-control"
+									id="inputScore"
+								/>
+							</div>
+							<!-- horizontal line -->
+							<div class="bg-info mb-2" style="height: 1px"></div>
 
-				<div class="write-up container text-center mt-5 pt-5">
-					<h1>
-						The best
-						<span>online examinations </span>service provider in
-						Nigeria
-					</h1>
-					<p>
-						Lorem ipsum dolor sit amet consectetur adipisicing elit.
-						Sed aspernatur repellat error officiis quia quaerat modi
-						necessitatibus qui quis ipsam doloremque vero, sunt et
-						libero nostrum, corrupti pariatur! Quos, autem?
-					</p>
-					<p>
-						Lorem ipsum dolor sit amet consectetur adipisicing elit.
-						Sed aspernatur repellat error officiis quia quaerat modi
-						necessitatibus qui quis ipsam doloremque vero, sunt et
-						libero nostrum, corrupti pariatur! Quos, autem?
-					</p>
+							<div class="col-12">
+								<label for="inputQuestion" class="form-label"
+									>Question</label
+								>
+								<input
+									required
+									type="text"
+									class="form-control"
+									id="inputQuestion"
+									placeholder="Enter your question here"
+								/>
+							</div>
+							<!-- options here -->
+							<div class="row">
+								<div class="col-lg-4 col-md-6 col-sm-12 mt-2">
+									<div class="input-group">
+										<div class="input-group-text">
+											<input
+												required
+												class="
+													form-check-input
+													mt-0
+													optionInputs
+												"
+												type="radio"
+												name="option"
+												value="option1"
+												aria-label="Radio button for following text input"
+											/>
+										</div>
+										<input
+											id="option1"
+											required
+											type="text"
+											class="form-control"
+											aria-label="Text input with radio button"
+										/>
+									</div>
+								</div>
+
+								<div class="col-lg-4 col-md-6 col-sm-12 mt-2">
+									<div class="input-group">
+										<div class="input-group-text">
+											<input
+												class="
+													form-check-input
+													mt-0
+													optionInputs
+												"
+												required
+												type="radio"
+												name="option"
+												value="option2"
+												aria-label="Radio button for following text input"
+											/>
+										</div>
+										<input
+											id="option2"
+											type="text"
+											required
+											class="form-control"
+											aria-label="Text input with radio button"
+										/>
+									</div>
+								</div>
+
+								<div class="col-lg-4 col-md-6 col-sm-12 mt-2">
+									<div class="input-group">
+										<div class="input-group-text">
+											<input
+												class="
+													form-check-input
+													mt-0
+													optionInputs
+												"
+												required
+												type="radio"
+												name="option"
+												value="option3"
+												aria-label="Radio button for following text input"
+											/>
+										</div>
+										<input
+											id="option3"
+											type="text"
+											required
+											class="form-control"
+											aria-label="Text input with radio button"
+										/>
+									</div>
+								</div>
+
+								<div class="col-lg-4 col-md-6 col-sm-12 mt-2">
+									<div class="input-group">
+										<div class="input-group-text">
+											<input
+												class="
+													form-check-input
+													mt-0
+													optionInputs
+												"
+												required
+												type="radio"
+												name="option"
+												value="option4"
+												aria-label="Radio button for following text input"
+											/>
+										</div>
+										<input
+											id="option4"
+											type="text"
+											required
+											class="form-control"
+											aria-label="Text input with radio button"
+										/>
+									</div>
+								</div>
+
+								<div class="col-lg-4 col-md-6 col-sm-12 mt-2">
+									<div class="input-group">
+										<div class="input-group-text">
+											<input
+												class="
+													form-check-input
+													mt-0
+													optionInputs
+												"
+												required
+												type="radio"
+												name="option"
+												value="option5"
+												aria-label="Radio button for following text input"
+											/>
+										</div>
+										<input
+											id="option5"
+											type="text"
+											required
+											class="form-control"
+											aria-label="Text input with radio button"
+										/>
+									</div>
+								</div>
+
+								<div class="col-lg-4 col-md-6 col-sm-12 mt-2">
+									<input
+										required
+										min="1"
+										max="100"
+										type="number"
+										class="form-control"
+										id="questionScore"
+										placeholder="question score"
+									/>
+								</div>
+							</div>
+
+							<div class="col-12">
+								<button
+									id="addQuizBtn"
+									type="submit"
+									class="btn modalBtn d-block mx-auto"
+								>
+									Add
+								</button>
+							</div>
+						</form>
+
+						<!-- container for holding the quizzes as they are being created -->
+						<form class="row g-3 questionPaperForm d-none">
+							<div class="bg-info text-white mt-5 text-center">
+								<h5 class="py-1" id="questionPaperTitle">
+									question Paper title
+								</h5>
+							</div>
+
+							<div id="new-quiz">
+								<!--Question Paper Comes Here-->
+							</div>
+
+							<div class="col-12">
+								<button
+									type="submit"
+									class="btn modalBtn d-block mx-auto"
+								>
+									Done
+								</button>
+							</div>
+						</form>
+					</div>
 				</div>
 			</main>
 
@@ -340,6 +499,6 @@
 		<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 		<script src="./assets/js/app.js"></script>
 		<script src="./assets/js/bootstrap.min.js"></script>
-		<script src="./assets/js/index.js"></script>
+		<script src="./assets/js/create-quiz.js"></script>
 	</body>
 </html>

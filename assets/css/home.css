@@ -21,18 +21,17 @@
 	height: 60px;
 	width: 250px;
 	margin: 0 auto;
-	color: rgb(19, 23, 71);
+	color: rgb(19, 23, 71) !important;
 }
 .take-quiz:hover,
 #continue-quiz-btn:hover {
-	background-color: rgb(37, 189, 214);
-	color: rgb(187, 233, 240);
+	background-color: rgb(111, 196, 209);
+	color: white;
 }
 
 .quiz-id {
 	background-color: rgb(187, 233, 240);
 	border-radius: 10px;
-	height: 100px;
 	width: 50%;
 }
 .quiz-id input {
@@ -58,4 +57,9 @@ button#continue-quiz-btn {
 a {
 	text-decoration: none;
 	color: inherit;
+}
+
+.createdQuiz:hover,
+.createdResult:hover {
+	background-color: rgb(207, 226, 255);
 }

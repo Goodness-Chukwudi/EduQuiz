@@ -1,4 +1,5 @@
 "use strict";
+
 const quizTitle_El = document.getElementById("quiz-title"),
 	timeLeft_El = document.getElementById("time-left"),
 	questionNumber_El = document.getElementById("question-number"),
@@ -6,77 +7,29 @@ const quizTitle_El = document.getElementById("quiz-title"),
 	nextBtn = document.getElementById("nextBtn"),
 	activeQuestion_El = document.querySelector(".activeQuestion"),
 	options_El = document.querySelector("#options");
-let currentQuestionIndex = 0;
 
+window.addEventListener("load", startQuiz);
 nextBtn.addEventListener("click", handleNext);
 prevBtn.addEventListener("click", handlePrevious);
 
-let quiz = {
-	title: "Demo Quiz",
-	timeLeft: 30,
-	questions: [
-		{
-			num: 1,
-			question: "This is question 1",
-			options: [
-				"option Q1 1",
-				"option Q1 2",
-				"option Q1 3",
-				"option Q1 4",
-				"option Q1 5",
-			],
-			answer: "",
-		},
-		{
-			num: 2,
-			question: "This is question 2",
-			options: [
-				"option Q2 1",
-				"option Q2 2",
-				"option Q2 3",
-				"option Q2 4",
-				"option Q2 5",
-			],
-			answer: "",
-		},
-		{
-			num: 3,
-			question: "This is question 3",
-			options: [
-				"option Q3 1",
-				"option Q3 2",
-				"option Q3 3",
-				"option Q3 4",
-				"option Q3 5",
-			],
-			answer: "",
-		},
-		{
-			num: 4,
-			question: "This is question 4",
-			options: [
-				"option Q4 1",
-				"option Q4 2",
-				"option Q4 3",
-				"option Q4 4",
-				"option Q4 5",
-			],
-			answer: "",
-		},
-		{
-			num: 5,
-			question: "This is question 5",
-			options: [
-				"option Q5 1",
-				"option Q5 2",
-				"option Q5 3",
-				"option Q5 4",
-				"option Q5 5",
-			],
-			answer: "",
-		},
-	],
-};
+let quiz = {},
+	activeQuestion,
+	currentQuestionIndex = 0,
+	answerUpdate = {
+		questionNum: 0,
+		answer: "",
+		isCompleted: false,
+	};
+
+function startQuiz() {
+	quiz = JSON.parse(sessionStorage.getItem("eduQuiz_Active_Quiz"));
+	if (quiz) {
+		setQuiz();
+	} else {
+		alert("Error! No quiz to take");
+		location = "/";
+	}
+}
 
 function setQuiz() {
 	currentQuestionIndex = 0;
@@ -84,12 +37,12 @@ function setQuiz() {
 	timeLeft_El.textContent = `Time left: ${quiz.timeLeft}`;
 
 	setActiveQuestion();
+	handleCountDown();
 }
 
 function setActiveQuestion() {
-	let activeQuestion = quiz.questions[currentQuestionIndex];
+	activeQuestion = quiz.questions[currentQuestionIndex];
 	let optionsDiv = "";
-
 	activeQuestion_El.textContent = activeQuestion.question;
 	questionNumber_El.textContent = `(${currentQuestionIndex + 1} of ${
 		quiz.questions.length
@@ -106,31 +59,91 @@ function setActiveQuestion() {
                                     name="optionBtn"
                                     value=${option}
                                 />
-                                <span class="px-2">${option}</span>
+                                <span class="px-2 ansOptions">${option}</span>
                             </label>
                         </div>`;
 	}
 	options_El.innerHTML = optionsDiv;
+
+	//set an event listener to track selected options
+	let radOptions = document.getElementsByClassName("ansOptions");
+	for (const radOption of radOptions) {
+		radOption.addEventListener("click", () => {
+			answerUpdate.questionNum = activeQuestion.num;
+			answerUpdate.answer = radOption.textContent;
+		});
+	}
+}
+
+function handleCountDown() {
+	let id = setInterval(timer(), 60000);
+
+	function timer() {
+		() => {
+			if (quiz.timeLeft <= 1) {
+				clearInterval(id);
+				alert("You have exhausted the time for this quiz!\nThank you!");
+				sessionStorage.removeItem("eduQuiz_Active_Quiz");
+				location = "/";
+			}
+			quiz.timeLeft -= 1;
+			timeLeft_El.textContent = `Time left: ${quiz.timeLeft}`;
+		};
+	}
 }
 
 function handleNext() {
 	if (currentQuestionIndex < quiz.questions.length - 1) {
 		currentQuestionIndex++;
 		setActiveQuestion();
+
+		// send update
+		updateAnswer(answerUpdate);
 	} else if (currentQuestionIndex === quiz.questions.length - 1) {
 		//Done
-		console.log("done");
+		currentQuestionIndex++;
+		nextBtn.textContent = "Finish";
+		//send update
+		updateAnswer(answerUpdate);
+	} else if (currentQuestionIndex === quiz.questions.length) {
+		let done = confirm("please confirm submission");
+		if (done) {
+			//send completed update
+			answerUpdate.isCompleted = true;
+			updateAnswer(answerUpdate);
+			sessionStorage.removeItem("eduQuiz_Active_Quiz");
+			// redirect to home page
+			location = "/";
+		} else currentQuestionIndex--;
 	}
 }
 
 function handlePrevious() {
+	nextBtn.textContent = "Next";
 	if (currentQuestionIndex > 0) {
 		currentQuestionIndex--;
 		setActiveQuestion();
 	} else if (currentQuestionIndex <= 0) {
-		//Done
-		console.log("done");
+		alert("last question");
 	}
 }
 
-setQuiz();
+function updateAnswer(data) {
+	// Make a HTTP PUT Request for updating answer
+	axios.defaults.withCredentials = true;
+	axios
+		.put("http://localhost:5500/api/quiz/update-answer", data, {
+			headers: { "Content-Type": "application/json" },
+			withCredentials: true,
+		})
+		.then((response) => {})
+		.catch((error) => {
+			if (error.response) {
+				alert(error.response.data);
+			} else if (error.request) {
+				alert(error.request);
+			} else {
+				console.log("Error", error.message);
+			}
+		});
+}

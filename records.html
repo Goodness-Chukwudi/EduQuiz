@@ -14,7 +14,7 @@
 			href="./assets/images/eduquiz-icon.ico"
 			type="image/x-icon"
 		/>
-		<title>EduQuiz|Home</title>
+		<title>EduQuiz|Records</title>
 	</head>
 	<body>
 		<div class="body position-relative">
@@ -136,82 +136,56 @@
 				</nav>
 			</header>
 
-			<main class="position-relative">
-				<div class="banner"></div>
-				<div
-					class="
-						container-fluid
-						position-absolute
-						top-0
-						start-0
-						home-cols
-					"
-				>
-					<div class="row align-items-center text-center">
-						<div class="col-lg-6 ps-5">
-							<p class="h1 service pt-2">
-								We provide the best online examinations
-								services!
-							</p>
-							<button class="h5 rounded-pill take-quiz mt-4">
-								Take a quiz
-							</button>
-
-							<!-- Quiz ID Popup -->
-
+			<main class="position-relative container my-5">
+				<div class="row">
+					<div class="col-md-6 col-sm-12">
+						<h4 class="text-center">Your Quizzes</h4>
+						<div>
 							<div
-								class="quiz-id mt-2 mx-auto p-2"
-								style="visibility: hidden"
+								class="
+									alert alert-primary
+									text-center
+									mt-3
+									quiz-alert
+								"
+								role="alert"
 							>
-								<div>
-									<input
-										type="text"
-										class="form-control mb-2"
-										id="id-input"
-										placeholder="Enter your quiz ID to continue"
-									/>
-								</div>
-								<button
-									id="continue-quiz-btn"
-									type="button"
-									class="btn btn-sm mb-2 mx-auto d-block"
-								>
-									Continue
-								</button>
+								No quiz was found! <br />
+								Login or create a quiz to see your quiz list
 							</div>
-
-							<!-- Quiz ID Popup ends -->
-						</div>
-						<div class="col-lg-6 px-5">
-							<div class="rounded-circle mx-auto round-img mt-5">
-								<img
-									class="img-fluid mt-5 pt-5"
-									src="./assets/images/online-test.png"
-									alt=""
-								/>
-							</div>
+							<ol
+								class="list-group list-group-numbered"
+								id="quizList"
+							>
+								<!-- List of quizzes is appended here -->
+							</ol>
 						</div>
 					</div>
-				</div>
 
-				<div class="write-up container text-center mt-5 pt-5">
-					<h1>
-						The best
-						<span>online examinations </span>service provider in
-						Nigeria
-					</h1>
-					<p>
-						Lorem ipsum dolor sit amet consectetur adipisicing elit.
-						Sed aspernatur repellat error officiis quia quaerat modi
-						necessitatibus qui quis ipsam doloremque vero, sunt et
-						libero nostrum, corrupti pariatur! Quos, autem?
-					</p>
-					<p>
-						Lorem ipsum dolor sit amet consectetur adipisicing elit.
-						Sed aspernatur repellat error officiis quia quaerat modi
-						necessitatibus qui quis ipsam doloremque vero, sunt et
-						libero nostrum, corrupti pariatur! Quos, autem?
-					</p>
+					<div class="col-md-6 col-sm-12">
+						<h4 class="text-center">Your Results</h4>
+						<div>
+							<div
+								class="
+									alert alert-primary
+									text-center
+									mt-3
+									result-alert
+								"
+								role="alert"
+							>
+								No result was found! <br />
+								Login or take a quiz to see your result list
+							</div>
+							<ol
+								class="
+									resultList
+									list-group list-group-numbered
+								"
+								id="resultList"
+							></ol>
+						</div>
+					</div>
 				</div>
 			</main>
 
@@ -249,7 +223,7 @@
 
 		<!-- Modals  -->
 		<!-- Modals  -->
-		<!-- Modals  -->
+		<!-- Modals for login -->
 		<div
 			class="modal fade"
 			id="staticBackdrop"
@@ -335,11 +309,79 @@
 		</div>
 		<!-- Modals  -->
 		<!-- Modals  -->
-		<!-- Modals  -->
+		<!-- Modals for login -->
+
+		<!-- Modal for records -->
+		<div
+			class="modal fade"
+			id="exampleModal"
+			tabindex="-1"
+			aria-labelledby="exampleModalLabel"
+			aria-hidden="true"
+		>
+			<div
+				class="modal-dialog modal-dialog-centered modal-xl"
+				style="overflow: auto"
+			>
+				<div class="modal-content">
+					<div class="modal-header">
+						<h5
+							style="width: 100%"
+							class="py-3 bg-info text-white text-center"
+							id="questionPaperTitle"
+						>
+							question Paper title
+						</h5>
+						<button
+							type="button"
+							class="btn-close"
+							data-bs-dismiss="modal"
+							aria-label="Close"
+						></button>
+					</div>
+					<div class="modal-body" style="overflow: scroll">
+						<!-- container for holding the quizzes as they are being created -->
+						<form class="row g-3">
+							<div class="col-md-6">
+								<label
+									id="time"
+									for="inputDuration"
+									class="form-label"
+									>Duration (in mins)</label
+								>
+								<input
+									disabled
+									class="form-control"
+									id="inputDuration"
+								/>
+							</div>
+							<div class="col-md-6">
+								<label for="inputScore" class="form-label"
+									>Total available score</label
+								>
+								<input
+									disabled
+									class="form-control"
+									id="inputScore"
+								/>
+							</div>
+							<!-- horizontal line -->
+							<div class="bg-info mb-2" style="height: 1px"></div>
+
+							<div id="new-quiz">
+								<!--Question Paper Comes Here-->
+							</div>
+						</form>
+					</div>
+					<div class="modal-footer"></div>
+				</div>
+			</div>
+		</div>
+		<!-- Modal for records ends-->
 
 		<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 		<script src="./assets/js/app.js"></script>
 		<script src="./assets/js/bootstrap.min.js"></script>
-		<script src="./assets/js/index.js"></script>
+		<script src="./assets/js/records.js"></script>
 	</body>
 </html>
