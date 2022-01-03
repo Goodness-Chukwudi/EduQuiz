@@ -259,21 +259,15 @@ function updateUIQuestionPaper() {
 function submitQuestionPaper(e) {
 	e.preventDefault();
 	// Make a HTTP POST Request for creating quiz
-	axios.defaults.withCredentials = true;
 	axios
 		.post("http://localhost:5500/api/quiz", questionPaper, {
 			headers: { "Content-Type": "application/json" },
 			withCredentials: true,
 		})
 		.then((response) => {
-			// save user in session storage
-			sessionStorage.setItem(
-				"eduQuiz_Active_User",
-				JSON.stringify(response.data)
-			);
 			//delete eduQuiz_Active_questionPaper and reload page
 			sessionStorage.removeItem("eduQuiz_Active_questionPaper");
-			alert("Successul");
+			alert(response.data);
 			location = location.href;
 		})
 		.catch((error) => {

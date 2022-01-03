@@ -76,19 +76,18 @@ function setActiveQuestion() {
 }
 
 function handleCountDown() {
-	let id = setInterval(timer(), 60000);
+	let id = setInterval(timer, 60000);
 
 	function timer() {
-		() => {
-			if (quiz.timeLeft <= 1) {
-				clearInterval(id);
-				alert("You have exhausted the time for this quiz!\nThank you!");
-				sessionStorage.removeItem("eduQuiz_Active_Quiz");
-				location = "/";
-			}
+		if (quiz.timeLeft <= 1) {
+			clearInterval(id);
+			alert("You have exhausted the time for this quiz!\nThank you!");
+			sessionStorage.removeItem("eduQuiz_Active_Quiz");
+			location = "/";
+		} else {
 			quiz.timeLeft -= 1;
 			timeLeft_El.textContent = `Time left: ${quiz.timeLeft}`;
-		};
+		}
 	}
 }
 
@@ -103,6 +102,7 @@ function handleNext() {
 		//Done
 		currentQuestionIndex++;
 		nextBtn.textContent = "Finish";
+		nextBtn.classList = "btn btn-success align-items-center px-4";
 		//send update
 		updateAnswer(answerUpdate);
 	} else if (currentQuestionIndex === quiz.questions.length) {
@@ -120,6 +120,7 @@ function handleNext() {
 
 function handlePrevious() {
 	nextBtn.textContent = "Next";
+	nextBtn.classList = "btn btn-primary align-items-center px-4";
 	if (currentQuestionIndex > 0) {
 		currentQuestionIndex--;
 		setActiveQuestion();
@@ -136,7 +137,9 @@ function updateAnswer(data) {
 			headers: { "Content-Type": "application/json" },
 			withCredentials: true,
 		})
-		.then((response) => {})
+		.then((response) => {
+			if (data.isCompleted) alert(response.data);
+		})
 		.catch((error) => {
 			if (error.response) {
 				alert(error.response.data);

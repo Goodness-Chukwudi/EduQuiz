@@ -2,14 +2,15 @@
 
 window.addEventListener("load", updateRecords);
 
-function updateRecords() {
-	getUserDetails();
-	const user = JSON.parse(sessionStorage.getItem("eduQuiz_Active_User"));
+async function updateRecords() {
+	const user = await getUserDetails();
 	if (user.quizzes) setQuizDetails(user);
 	if (user.results) setResultDetails(user);
 }
 
 function setQuizDetails(user) {
+	if (user.quizzes.length === 0) return;
+
 	document.querySelector(
 		".quiz-alert"
 	).innerHTML = `${user.quizzes.length} quiz was found! <br />
@@ -43,6 +44,8 @@ function setQuizDetails(user) {
 }
 
 function setResultDetails(user) {
+	if (user.results.length === 0) return;
+
 	document.querySelector(
 		".result-alert"
 	).innerHTML = `${user.results.length} result was found! <br />
@@ -57,10 +60,10 @@ function setResultDetails(user) {
 			class="createdResult list-group-item d-flex justify-content-between align-items-start"
 			id="${result.id}">
 			<div class="ms-2 me-auto">
-				<div class="fw-bold">Quiz ID: ${result.id}</div>
+				<div class="fw-bold">Result ID: ${result.id}</div>
 				${result.title}
 			</div>
-			<span class="badge bg-info rounded-pill">candidates: ${result.score}</span>
+			<span class="badge bg-info rounded-pill">Score: ${result.score}</span>
 		</li>`;
 	});
 
@@ -74,30 +77,30 @@ function setResultDetails(user) {
 	}
 }
 
-function getUserDetails() {
+async function getUserDetails() {
 	// Make a HTTP GET Request for user details
-	axios.defaults.withCredentials = true;
-	axios
-		.get("http://localhost:5500/api/quiz/user", {
+	try {
+		const response = await axios.get("http://localhost:5500/api/quiz/me", {
 			headers: { "Content-Type": "application/json" },
 			withCredentials: true,
-		})
-		.then((response) => {
-			// save user in session storage
-			sessionStorage.setItem(
-				"eduQuiz_Active_User",
-				JSON.stringify(response.data)
-			);
-		})
-		.catch((error) => {
-			if (error.response) {
-				alert(error.response.data);
-			} else if (error.request) {
-				alert(error.request);
-			} else {
-				console.log("Error", error.message);
-			}
 		});
+
+		// save user in session storage
+		sessionStorage.setItem(
+			"eduQuiz_Active_User",
+			JSON.stringify(response.data)
+		);
+
+		return response.data;
+	} catch (error) {
+		if (error.response) {
+			alert(error.response.data);
+		} else if (error.request) {
+			alert(error.request);
+		} else {
+			console.log("Error", error.message);
+		}
+	}
 }
 
 function getSelectedQuiz(id) {

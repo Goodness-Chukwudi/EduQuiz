@@ -37,7 +37,8 @@ function getQuiz(id) {
 		})
 		.catch((error) => {
 			if (error.response) {
-				alert(error.response.data);
+				alert(error.message);
+				console.log(error.response.data);
 			} else if (error.request) {
 				alert(error.request);
 			} else {
