@@ -133,7 +133,7 @@ function updateAnswer(data) {
 	// Make a HTTP PUT Request for updating answer
 	axios.defaults.withCredentials = true;
 	axios
-		.put("http://localhost:5500/api/quiz/update-answer", data, {
+		.put("https://eduquizng.herokuapp.com/api/quiz/update-answer", data, {
 			headers: { "Content-Type": "application/json" },
 			withCredentials: true,
 		})

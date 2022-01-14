@@ -1,6 +1,7 @@
 //Controls login and log out
 "use strict";
 
+displayLoginPage(); //Dynamically displays login page for evry page
 const logInLink = document.querySelector(".logInLink"),
 	signUpLink = document.querySelector(".signUpLink"),
 	signupLoginBtn = document.getElementById("signupLoginBtn"),
@@ -23,9 +24,13 @@ function setActiveUser() {
 }
 
 function handleLogIn() {
+	document.querySelector(".confirmPassword").className =
+		"row confirmPassword d-none";
 	setPopupLabels("Log In");
 }
 function handleSignUp() {
+	document.querySelector(".confirmPassword").className =
+		"row confirmPassword";
 	setPopupLabels("Sign Up");
 }
 
@@ -37,15 +42,16 @@ function setPopupLabels(txt) {
 
 function handleLoginSignUp(e) {
 	e.preventDefault();
-	const url =
-			signupLoginBtn.value === "Log In"
-				? "http://localhost:5500/api/login"
-				: "http://localhost:5500/api/register",
+	let url = "https://eduquizng.herokuapp.com/api/login",
 		data = {
 			userId: document.getElementById("username").value,
 			password: document.getElementById("password").value,
 		};
 
+	if (signupLoginBtn.value === "Sign Up") {
+		data.confirmPassword = document.getElementById("confirmPassword").value;
+		url = "https://eduquizng.herokuapp.com/api/register";
+	}
 	// Make a HTTP POST Request for either login or register
 	axios.defaults.withCredentials = true;
 	axios
@@ -77,7 +83,7 @@ function logoutUser() {
 	// Make a HTTP GET Request to log user out
 	axios.defaults.withCredentials = true;
 	axios
-		.get("http://localhost:5500/api/logout", {
+		.get("https://eduquizng.herokuapp.com/api/logout", {
 			headers: { "Content-Type": "application/json" },
 			withCredentials: true,
 		})
