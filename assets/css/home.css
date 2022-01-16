@@ -91,4 +91,7 @@ a {
 	.quiz-id {
 		width: 100%;
 	}
+	.write-up {
+		margin-top: 180px !important;
+	}
 }
