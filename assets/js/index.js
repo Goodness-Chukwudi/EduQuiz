@@ -23,7 +23,7 @@ function getQuiz(id) {
 	// Make a HTTP GET Request for starting quiz
 	axios.defaults.withCredentials = true;
 	axios
-		.get("https://eduquizng.herokuapp.com/api/quiz/take-quiz/" + id, {
+		.get(baseAPI + "/api/quiz/take-quiz/" + id, {
 			headers: { "Content-Type": "application/json" },
 			withCredentials: true,
 		})
@@ -37,8 +37,7 @@ function getQuiz(id) {
 		})
 		.catch((error) => {
 			if (error.response) {
-				alert(error.message);
-				console.log(error.response.data);
+				alert(error.response.data);
 			} else if (error.request) {
 				alert(error.request);
 			} else {

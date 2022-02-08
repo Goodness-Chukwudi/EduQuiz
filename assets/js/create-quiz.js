@@ -260,7 +260,7 @@ function submitQuestionPaper(e) {
 	e.preventDefault();
 	// Make a HTTP POST Request for creating quiz
 	axios
-		.post("https://eduquizng.herokuapp.com/api/quiz", questionPaper, {
+		.post(baseAPI + "/api/quiz", questionPaper, {
 			headers: { "Content-Type": "application/json" },
 			withCredentials: true,
 		})

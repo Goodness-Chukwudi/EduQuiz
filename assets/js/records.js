@@ -80,13 +80,10 @@ function setResultDetails(user) {
 async function getUserDetails() {
 	// Make a HTTP GET Request for user details
 	try {
-		const response = await axios.get(
-			"https://eduquizng.herokuapp.com/api/quiz/me",
-			{
-				headers: { "Content-Type": "application/json" },
-				withCredentials: true,
-			}
-		);
+		const response = await axios.get(baseAPI + "/api/quiz/me", {
+			headers: { "Content-Type": "application/json" },
+			withCredentials: true,
+		});
 
 		// save user in session storage
 		sessionStorage.setItem(
@@ -110,7 +107,7 @@ function getSelectedQuiz(id) {
 	// Make a HTTP GET Request for the selected quiz
 	axios.defaults.withCredentials = true;
 	axios
-		.get("https://eduquizng.herokuapp.com/api/quiz/get-quiz/" + id, {
+		.get(baseAPI + "/api/quiz/get-quiz/" + id, {
 			headers: { "Content-Type": "application/json" },
 			withCredentials: true,
 		})
@@ -132,7 +129,7 @@ function getSelectedResult(id) {
 	// Make a HTTP GET Request for selected result
 	axios.defaults.withCredentials = true;
 	axios
-		.get("https://eduquizng.herokuapp.com/api/quiz/get-result/" + id, {
+		.get(baseAPI + "/api/quiz/get-result/" + id, {
 			headers: { "Content-Type": "application/json" },
 			withCredentials: true,
 		})
