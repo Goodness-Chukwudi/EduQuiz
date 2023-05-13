@@ -1,11 +1,22 @@
+// {
+// 	"liveServer.settings.port": 5500,
+// 	"liveServer.settings.root": "/",
+// 	"liveServer.settings.CustomBrowser": "chrome",
+// 	"liveServer.settings.https": {
+// 		"enable": true,
+// 		"cert": "/Users/moni-tech/Git/EduQuiz/https-server/localhost.pem",
+// 		"key": "/Users/moni-tech/Git/EduQuiz/https-server/localhost.key",
+// 		"passphrase": "12345678"
+// 	}
+// }
+
 {
 	"liveServer.settings.port": 5500,
 	"liveServer.settings.root": "/",
-	"liveServer.settings.CustomBrowser": "chrome",
 	"liveServer.settings.https": {
-		"enable": true,
-		"cert": "/Users/GoodyBag/Git/EduQuiz/https-server/localhost.pem",
-		"key": "/Users/GoodyBag/Git/EduQuiz/https-server/localhost.key",
-		"passphrase": "12345678"
+	"enable": true, //set it true to enable the feature.
+	"cert": "/Users/moni-tech/Git/EduQuiz/https-server/localhost.crt", //full path of the certificate
+	"key": "/Users/moni-tech/Git/EduQuiz/https-server/localhost.key", //full path of the private key
+	"passphrase": "12345678"
 	}
-}
+	}

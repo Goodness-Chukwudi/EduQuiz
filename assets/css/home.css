@@ -11,8 +11,6 @@ body {
 .banner {
 	width: 0;
 	height: 0;
-	/* border-top: 55vw solid rgb(19, 23, 71);
-	border-right: 180vw solid transparent; */
 	border-top: 700px solid rgb(19, 23, 71);
 	border-right: 2700px solid transparent;
 }
